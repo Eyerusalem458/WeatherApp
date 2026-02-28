@@ -1,0 +1,144 @@
+.weather-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Canvas */
+.weather-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Clouds */
+.clouds {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 20%, white 30%, transparent 50%),
+              radial-gradient(circle at 60% 30%, white 35%, transparent 55%),
+              radial-gradient(circle at 80% 20%, white 30%, transparent 50%);
+  opacity: 0.4;
+  animation: clouds 50s linear infinite;
+}
+
+@keyframes clouds {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Sun */
+.sun {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,200,0,0.9), transparent 70%);
+  top: 5%;
+  right: 5%;
+  animation: sunPulse 4s infinite alternate;
+  border-radius: 50%;
+}
+
+@keyframes sunPulse {
+  from { transform: scale(1); opacity: 0.6; }
+  to { transform: scale(1.2); opacity: 1; }
+}
+
+/* Moon */
+.moon {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #fefbd8 0%, transparent 70%);
+  border-radius: 50%;
+  animation: moonGlow 4s infinite alternate;
+}
+
+@keyframes moonGlow {
+  from { opacity: 0.7; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+/* Stars */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.stars::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow:
+    20px 30px white,
+    100px 150px white,
+    200px 80px white,
+    300px 50px white,
+    400px 120px white,
+    500px 60px white,
+    600px 200px white;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* Snow */
+.snow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(white 2px, transparent 2px);
+  background-size: 15px 15px;
+  animation: snow 12s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes snow {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+}
+
+/* Fog / Mist / Haze */
+.fog {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+  animation: fog 60s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes fog {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Lightning */
+.lightning {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  animation: lightning 5s infinite;
+}
+
+@keyframes lightning {
+  0%,4%,8% { opacity: 0; }
+  2% { opacity: 0.8; }
+  6% { opacity: 0.6; }
+}

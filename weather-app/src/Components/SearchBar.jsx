@@ -1,18 +1,17 @@
-import React from "react";
-
 function SearchBar({ city, setCity, onSearch }) {
   return (
-    <div className="flex gap-2 mb-6">
+    <div className="flex mb-4 sm:mb-6 bg-white/70 rounded-xl overflow-hidden shadow-md w-full">
       <input
         type="text"
         placeholder="Enter city name..."
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        className="w-full p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-400"
+        onKeyDown={(e) => e.key === "Enter" && onSearch()}
+        className="w-full p-3 sm:p-4 bg-transparent focus:outline-none text-sm sm:text-base"
       />
       <button
         onClick={onSearch}
-        className="bg-blue-500 text-white px-5 py-3 rounded-lg hover:bg-blue-600 transition"
+        className="bg-blue-500 px-4 sm:px-6 text-white hover:bg-blue-600 transition"
       >
         Search
       </button>
